@@ -1,0 +1,23 @@
+{
+  "name": "gotcha-api",
+  "version": "1.0.0",
+  "description": "Api for Gotcha mobile app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Gotcha",
+    "api",
+    "node",
+    "react",
+    "express"
+  ],
+  "author": "stevenvandepoel",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.5.5",
+    "mongoose": "^5.9.5"
+  }
+}

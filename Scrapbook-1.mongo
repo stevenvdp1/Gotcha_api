@@ -1,0 +1,4 @@
+db.users.drop()
+db.users.insert({"name": "Steven Van de Poel"})
+db.users.find()
+
