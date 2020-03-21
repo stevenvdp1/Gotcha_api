@@ -2,3 +2,6 @@ db.users.drop()
 db.users.insert({"name": "Steven Van de Poel"})
 db.users.find()
 
+db.games.drop()
+db.games.insert({"name": "Keulen"})
+db.games.find()
