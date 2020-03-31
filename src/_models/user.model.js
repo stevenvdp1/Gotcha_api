@@ -8,7 +8,7 @@ const User = mongoose.model(
         games: [
             {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: "game"
+                ref: "games"
             }
         ]
     })

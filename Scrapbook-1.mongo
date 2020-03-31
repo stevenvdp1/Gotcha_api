@@ -1,7 +1,6 @@
 db.users.drop()
-db.users.insert({"name": "Steven Van de Poel", "games":[ObjectId("5e75f844a128fc6f0cb08b49")]})
+db.users.insert({"name": "Steven Van de Poel", "games":[ObjectId("5e768718a128fc6f0cb08b4c")]})
 db.users.find()
-
 
 db.games.drop()
 db.games.insert({"name": "Keulen"})
