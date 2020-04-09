@@ -1,17 +1,25 @@
 const mongoose = require("mongoose");
 
-const User = mongoose.model(
-    "users",
-    new mongoose.Schema({
-        name: String,
-        email: String,
-        games: [
-            {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "games"
-            }
-        ]
-    })
-)
+const userSchema = mongoose.Schema({
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+        match: /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    userName: {
+        type: String,
+        required: true
+    },
+    refreshTokens: {
+        type: Array,
+        required: true,
+        default: []
+    }
+})
 
-module.exports = User;
+module.exports = mongoose.model("User", userSchema);

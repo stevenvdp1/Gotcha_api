@@ -1,16 +1,39 @@
 const mongoose = require("mongoose");
 
-const Game = mongoose.model(
-    "games",
-    new mongoose.Schema({
-        name:String,
-        users:[
-            {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "users"
-            }
-        ]
-    })
-)
+const gameSchema = mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+        min: 5,
+        max: 255
+    },
+    description: {
+        type: String,
+        required: true,
+        min: 5,
+        max: 255
+    },
+    startDate: {
+        type: Date,
+        required: true,
+        min: new Date(),
+        max: new Date(new Date().setFullYear(new Date().getFullYear() + 1))
+    },
+    creator:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"User",
+        required:true
+    },
+    players: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        }
+    ],
+    creationDate:{
+        type: Date,
+        required: true
+    }
+})
 
-module.exports = Game
+module.exports = mongoose.model("Game", gameSchema)

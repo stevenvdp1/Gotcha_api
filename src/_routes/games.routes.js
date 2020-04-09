@@ -1,28 +1,17 @@
 const express = require('express')
 const router = express.Router()
+const gamesController = require('../_controllers/games.controls')
+const { authenticate } = require('../_middleware/authentication')
+const { validate, game_validator } = require('../_middleware/validators')
 
-const Games = require('../_models/game.model')
+router.route('/')
+    .get(authenticate, gamesController.get_games)
+    .post(authenticate, game_validator, validate, gamesController.create_game)
 
+router.delete('/:gameId', authenticate, gamesController.delete_game)
 
-//GET all
-router.get('/', (req, res, next) => {
-    Games.find()
-        .select('name')
-        .exec((err, games) => {
-            if (err) res.sendStatus(404)
-            return res.send(games)
-        })
-})
+router.patch('/:gameId/join', authenticate, gamesController.join_game)
 
-//Get by ID
-router.get('/:id', (req, res) => {
-    Games.findById(req.params.id)
-        .select('name users')
-        .populate('users', 'name')
-        .exec((err, games) => {
-            if (err) res.sendStatus(404)
-            return res.send(games)
-        })
-})
+router.patch('/:gameId/leave', authenticate, gamesController.leave_game)
 
 module.exports = router

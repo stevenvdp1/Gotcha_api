@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const logger = require('morgan')
 const gamesRoutes = require('./src/_routes/games.routes')
 const usersRoutes = require('./src/_routes/users.routes')
 
@@ -7,9 +8,10 @@ const app = express()
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(logger('dev'))
 
-app.use('/games', gamesRoutes)
 app.use('/users', usersRoutes)
+app.use('/games', gamesRoutes)
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*')

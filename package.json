@@ -4,7 +4,8 @@
   "description": "Api for Gotcha mobile app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
   "keywords": [
     "Gotcha",
@@ -16,9 +17,17 @@
   "author": "stevenvandepoel",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
+    "express-validator": "^6.4.0",
+    "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.5.5",
-    "mongoose": "^5.9.5"
+    "mongoose": "^5.9.5",
+    "morgan": "^1.10.0",
+    "uuid": "^7.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }
