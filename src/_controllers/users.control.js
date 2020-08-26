@@ -6,7 +6,7 @@ const { generate_access_token } = require('../_middleware/authentication')
 const User = require('../_models/user.model')
 
 exports.signup_user = (req, res, next) => {
-    User.findOne({ email: req.body.email })
+    User.findOne({ email: req.body.email.toLowerCase() })
         .exec((err, user) => {
             if (err) return res.status(500).json({ error: err })
             if (user) return res.status(409).json({ error: { message: 'Email address already in use' } })
@@ -27,7 +27,8 @@ exports.signup_user = (req, res, next) => {
 }
 
 exports.login_user = (req, res, next) => {
-    User.findOne({ email: req.body.email })
+    console.log(req.body)
+    User.findOne({ email: req.body.email.toLowerCase()})
         .exec(async (err, user) => {
             if (err) return res.status(500).json({ error: err })
             if (!user) return res.status(401).json({ message: 'Auth failed' })

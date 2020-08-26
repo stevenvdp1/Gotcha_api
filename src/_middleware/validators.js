@@ -9,9 +9,10 @@ exports.password_validator = [
         .withMessage('Invalid email'),
 
     check('password')
-        .isLength({ min: 8 })
-        .withMessage('Password needs to be 8 characters long')
+        .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,10}$/)
+        .withMessage('Password requires a minimum of eight characters, at least one letter and one number')
         .custom((value, { req }) => {
+            console.log(value)
             if (value !== req.body.confirmPassword) {
                 throw new Error('Passwords don\'t match');
             } else {

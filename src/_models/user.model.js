@@ -5,14 +5,15 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true,
         unique: true,
-        match: /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/
+        match: /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/,
+        collation: { locale: 'en', strength: 2 }
     },
     password: {
         type: String,
         required: true
     },
     userName: {
-        type: String,
+        type: String,   
         required: true
     },
     refreshTokens: {
